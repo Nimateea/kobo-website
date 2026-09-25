@@ -15,4 +15,19 @@ async function resend(path, payload) {
   if (!r.ok) console.error('resend', path, r.status, await r.text().catch(() => ''));
   return r;
 }
-module.exports = { isEmail, json, readBody, oneLine, resend };
+async function supabaseInsert(table, payload) {
+  const url = String(process.env.SUPABASE_URL || '').replace(/\/$/, '');
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null;
+  return fetch(`${url}/rest/v1/${table}`, {
+    method: 'POST',
+    headers: {
+      apikey: key,
+      Authorization: `Bearer ${key}`,
+      'Content-Type': 'application/json',
+      Prefer: 'resolution=ignore-duplicates,return=minimal',
+    },
+    body: JSON.stringify(payload),
+  });
+}
+module.exports = { isEmail, json, readBody, oneLine, resend, supabaseInsert };
