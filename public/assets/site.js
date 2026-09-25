@@ -45,5 +45,5 @@ if(Date.now()-last<3000)return msg('One moment, then try again.');last=Date.now(
 busy=true;btn.disabled=true;btn.textContent='Joining…';track('waitlist_submit');
 try{await submitWaitlist({email:v,consent:true});done=true;track('waitlist_success');
 f.innerHTML='<div tabindex="-1" id="wl-ok" class="rounded-[2rem] border border-white/10 bg-white/[0.02] p-6 text-center"><p class="text-white font-medium mb-1">You\'re on the list.</p><p class="text-gray-400 text-[13px] leading-relaxed">We\'ll email you when early access opens. Meanwhile, <a href="#how-it-works" class="underline hover:text-primary-light">see how Kobo works</a>.</p></div>';$('#wl-ok').focus()}
-catch(_){busy=false;btn.disabled=false;btn.textContent='Join the Kobo waitlist';track('waitlist_error');msg("Something went wrong on our side and your email wasn't saved. Please try again in a moment.")}});}
+catch(error){busy=false;btn.disabled=false;btn.textContent='Join the Kobo waitlist';track('waitlist_error');msg(error.message||"Something went wrong on our side and your email wasn't saved. Please try again in a moment.")}});}
 })();
