@@ -14,7 +14,7 @@ Static site (`public/`) + two Vercel serverless functions (`api/`). Tailwind is 
 
 ## Before going live
 - Domain is set to `https://getappkobo.com` in canonical/OG tags, `sitemap.xml`, `robots.txt` and JSON-LD. Find and replace it if the live domain differs.
-- `public/og-image.png` and the favicons are generated placeholders (built from the logo). Swap in your own banner and icons at the same paths.
+- `public/og-image.jpeg` and the favicons are the current social preview and site icons.
 - Privacy Policy and Terms are still the placeholder note at `/#privacy`. Publish them before launch.
 - Add rate limiting (Vercel Firewall) in front of `/api/*`.
 
