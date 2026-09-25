@@ -1,0 +1,13 @@
+{
+  "name": "kobo-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kobo marketing website (static site + Vercel serverless forms)",
+  "scripts": {
+    "build": "tailwindcss -c tailwind.config.js -i src/input.css -o public/assets/site.css --minify",
+    "watch": "tailwindcss -c tailwind.config.js -i src/input.css -o public/assets/site.css --watch",
+    "dev": "vercel dev"
+  },
+  "devDependencies": { "tailwindcss": "^3.4.17" },
+  "engines": { "node": ">=18" }
+}
