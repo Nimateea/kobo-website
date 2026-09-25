@@ -9,5 +9,5 @@
     "dev": "vercel dev"
   },
   "devDependencies": { "tailwindcss": "^3.4.17" },
-  "engines": { "node": ">=18" }
+  "engines": { "node": "24.x" }
 }
