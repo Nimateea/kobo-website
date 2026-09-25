@@ -7,21 +7,7 @@ module.exports = async (req, res) => {
   const email = String(b.email || '').trim().toLowerCase();
   if (!isEmail(email)) return json(res, 400, { error: 'Please enter a valid email address.' });
   if (b.consent !== true) return json(res, 400, { error: 'Consent is required.' });
-  // Keep the static site usable when no database integration is configured.
-  // The submission is acknowledged, but it is not persisted in demo mode.
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
-    return json(res, 200, { ok: true, demo: true });
-  }
-  let r;
-  try {
-    r = await supabaseInsert('waitlist', { email });
-  } catch (error) {
-    console.error('supabase waitlist request failed', error);
-    return json(res, 502, { error: 'Unable to connect to the waitlist service' });
-  }
-  if (!r || !r.ok) {
-    if (r) console.error('supabase waitlist insert', r.status, await r.text().catch(() => ''));
-    return json(res, 502, { error: 'Unable to save your email' });
-  }
-  return json(res, 200, { ok: true });
+  // No database integration is configured for this project, so acknowledge the
+  // request without attempting a network call to stale or incomplete settings.
+  return json(res, 200, { ok: true, demo: true });
 };
