@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tailwindcss -c tailwind.config.js -i src/input.css -o public/assets/site.css --minify",
     "watch": "tailwindcss -c tailwind.config.js -i src/input.css -o public/assets/site.css --watch",
-    "dev": "npx http-server public -p 3000"
+    "dev": "vercel dev --listen 3000"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17",
