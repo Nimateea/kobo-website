@@ -9,7 +9,7 @@ Static site (`public/`) + two Vercel serverless functions (`api/`). Tailwind is 
 
 ## Deploy (Vercel)
 1. Push this folder to a Git repo and import it in Vercel (settings come from `vercel.json`).
-2. Add the env vars from `.env.example` (Supabase URL and service-role key, Resend API key, and contact email settings) to Vercel.
+2. Add `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` to Vercel. The URL is `https://fnbrwewbchybdmfdbhtm.supabase.co`; get the service-role key from your Supabase project's API settings. Keep that key server-side and never add it to frontend code. Add the Resend and contact email settings for the contact form.
 3. Create the waitlist table in Supabase with the SQL below, then deploy.
 
 ```sql
