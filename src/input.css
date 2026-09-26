@@ -3,7 +3,7 @@
 
         html,body{overflow-x:hidden}
         body {
-            background-color: #0c0c0c;
+            background-color: #050505;
             color: #ffffff;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -74,9 +74,9 @@
 
         /* Nav Styles */
         .nav-pill {
-            background: rgba(26, 26, 26, 0.6);
+            background: rgba(10, 10, 10, 0.75);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         /* Hide Scrollbar */

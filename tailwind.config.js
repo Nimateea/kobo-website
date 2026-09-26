@@ -7,8 +7,8 @@ module.exports = {
       colors: {
         primary: { DEFAULT: '#592CBC', light: '#8F6BE0' },
         doly: {
-          dark: '#0c0c0c', darker: '#0a0a0a', light: '#e5e5e5',
-          neon: '#592CBC', gray: '#1a1a1a', muted: '#888888', darkgreen: '#1e1233',
+          dark: '#050505', darker: '#000000', light: '#e5e5e5',
+          neon: '#592CBC', gray: '#101010', muted: '#8a8a8a', darkgreen: '#1e1233',
         },
       },
       backgroundImage: {
