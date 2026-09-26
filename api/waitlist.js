@@ -7,7 +7,17 @@ module.exports = async (req, res) => {
   const email = String(b.email || '').trim().toLowerCase();
   if (!isEmail(email)) return json(res, 400, { error: 'Please enter a valid email address.' });
   if (b.consent !== true) return json(res, 400, { error: 'Consent is required.' });
-  // No database integration is configured for this project, so acknowledge the
-  // request without attempting a network call to stale or incomplete settings.
-  return json(res, 200, { ok: true, demo: true });
+  const result = await supabaseInsert('waitlist', {
+    email,
+    consent: true,
+    source: 'website',
+  });
+
+  if (!result) return json(res, 503, { error: 'Waitlist is temporarily unavailable.' });
+  if (!result.ok) {
+    console.error('waitlist insert failed', result.status, await result.text().catch(() => ''));
+    return json(res, 500, { error: 'Unable to join the waitlist right now.' });
+  }
+
+  return json(res, 200, { ok: true });
 };
