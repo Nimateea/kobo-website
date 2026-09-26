@@ -7,6 +7,9 @@
     "build": "tailwindcss -c tailwind.config.js -i src/input.css -o public/assets/site.css --minify",
     "watch": "tailwindcss -c tailwind.config.js -i src/input.css -o public/assets/site.css --watch"
   },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  },
   "devDependencies": {
     "tailwindcss": "^3.4.17",
     "vercel": "^60.0.1"
